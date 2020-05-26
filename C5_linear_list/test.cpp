@@ -9,4 +9,4 @@ int main(){
    // copy(a,)
     cout<<min(2,3)<<endl;
     return 0;
-}
+}f
