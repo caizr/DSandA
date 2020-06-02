@@ -18,4 +18,5 @@ C5 NOTICE:
             template<class T> void f(T a){/* ... */}//definition
         2. 构造函数考虑不全，参考代码
         3. 自己使用了copy将部分元素左移，以达到删除目的
-        4.
+        4. checkIndex用来检测索引值的异常，并是为protected成员，每次涉及
+           到使用Index的操作都应该先用checkIndex检查（例如get,erase)
