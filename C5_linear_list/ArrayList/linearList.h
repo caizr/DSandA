@@ -17,7 +17,7 @@ template<class T> class linearList{
                   // remove the element whose index is theIndex
       virtual void insert(int theIndex, const T& theElement) = 0;
                   // insert theElement so that its index is theIndex
-      virtual void output(ostream& out) const = 0;
+      //virtual void output(ostream& out) const = 0;
                   // insert list into stream out
         
 };

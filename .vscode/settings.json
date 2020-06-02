@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "array": "cpp"
+        "array": "cpp",
+        "*.tcc": "cpp",
+        "type_traits": "cpp",
+        "string": "cpp"
     }
 }
