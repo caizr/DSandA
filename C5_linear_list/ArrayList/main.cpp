@@ -21,6 +21,8 @@ int main(){
     std::cout<<"after erase: ";
     a1.output();
     arrayList<int> a2(a1);
+
+    arrayList<double> *d1=new arrayList<double>(100);
     std::cout<< "empty ?: " <<a2.empty()<<" indexOf(5): "<<a2.indexOf(5)
              <<" capacity: "<<a2.capacity()<<std::endl;
     return 0;
