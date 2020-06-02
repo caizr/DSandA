@@ -18,3 +18,4 @@ C5 NOTICE:
             template<class T> void f(T a){/* ... */}//definition
         2. 构造函数考虑不全，参考代码
         3. 自己使用了copy将部分元素左移，以达到删除目的
+        4.
