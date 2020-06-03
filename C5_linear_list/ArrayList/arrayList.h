@@ -2,7 +2,7 @@
 #ifndef arrayList_
 #define arrayList_
 #include "linearList.h"
-
+#include<algorithm>
 
 //类声明
 template<class T> 
@@ -36,6 +36,22 @@ class arrayList: public linearList<T>{
 };
 
 //定义构造，拷贝函数
+
+/* 没有写checkIndex，现在补充 */
+template<class T> void arrayList<T>::checkIndex(size_t theIndex) const{
+    if( theIndex<0 || theIndex>listsize){
+        //抛出异常
+        //书上的做法
+        //std::ostringstream s;
+        //s<<"index= "<<theIndex<<" size= "<<listsize;
+        //throw illegalIndex("no");
+        //我的做法
+        std::cout<<"Index value error!"<<std::endl;
+        throw "errorIndex";
+    }
+}
+
+
 
 /*
 //该自写的构造函数考虑不全
@@ -79,9 +95,16 @@ template<class T> int arrayList<T>::size() const{
     return listsize;
 };
 template<class T> T& arrayList<T>::get(int theIndex) const{
+    //需要做一个index检查，之前没有考虑到这一点
+    checkIndex(theIndex);
     return *(element+theIndex);
+    //书上做法 return element[theIndex];
 };
 template<class T> int arrayList<T>::indexOf(const T& theElement) const{
+    /* 书上做法：使用find函数 */
+    //int a=(std::find(element,element+listsize,theElement)-element);
+    //if(a == listsize)   return -1;
+    //else    return a;
     for(int i=0;i<listsize;++i){
         if(theElement == *(element+i))
             return i;
@@ -89,12 +112,18 @@ template<class T> int arrayList<T>::indexOf(const T& theElement) const{
     return -1;
 };
 template<class T> void arrayList<T>::erase(int theIndex){
+    //需要做一个index检查，之前没有考虑到这一点
+    checkIndex(theIndex);
     //我理解的erase，应该是把该索引的空间都删除！
     std::copy(element+theIndex+1,element+listsize,element+theIndex);
     //delete element[listsize-1];
     --listsize;
+    //书上接入了析构函数，我一开始以为是析构arrayList类，其实是析构element自身，因为element是T型
+    //element[--listsize].~T();
 };
 template<class T> void arrayList<T>::insert(int theIndex, const T& theElement){
+    //需要做一个index检查，之前没有考虑到这一点
+    checkIndex(theIndex);
     *(element+theIndex)=theElement;
     ++listsize;
 };
