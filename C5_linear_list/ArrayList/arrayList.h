@@ -3,7 +3,7 @@
 #define arrayList_
 #include "linearList.h"
 #include<algorithm>
-
+#include<iterator>
 //类声明
 template<class T> 
 class arrayList: public linearList<T>{
@@ -25,6 +25,10 @@ class arrayList: public linearList<T>{
         void output() const;
         //其他方法
         int capacity() const {return arrayLength;}
+        //迭代器
+        class iterator;
+        iterator begin(){return iterator(element);}
+        iterator end()  {return iterator(element+listsize);}
     protected:
         //检查 索引
         void checkIndex(size_t theIndex) const;
@@ -135,3 +139,5 @@ template<class T> void arrayList<T>::output() const{
 }
 
 #endif
+
+// 迭代器
