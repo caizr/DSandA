@@ -1,6 +1,7 @@
 #ifndef CHAIN_
 #define CHAIN_
-
+#include<iostream>
+using namespace std;
 template<class T>
 struct chainNode{
     chainNode<T> *next;
@@ -13,9 +14,13 @@ struct chainNode{
 template<class T>
 class chain{
     public:
+    //解析函数
         chain();
         chain(int);
         chain(const chain<T> &);
+        void output(ostream& out) const;
+    //析构函数
+        ~chain();
     //private:
         chainNode<T> *firstNode;
         int listsize;
@@ -45,8 +50,30 @@ chain<T>::chain(const chain<T> & theList){
         buf1=buf1->next;
         buf3=buf3->next;
     }
+    //最后几个另尾指针为NULL
+    buf3->next=NULL;
     
 }
+//析构函数
+template<class T>
+chain<T>::~chain(){
+    cout<<"~chain!"<<endl;
+    chainNode<T> * toDelete=firstNode;
+    while(toDelete->next != NULL){
+        chainNode<T> * temp=toDelete->next;
+        delete toDelete;
+        toDelete = temp;
+    }
+}
 
+//输出
+template<class T>
+void chain<T>::output(ostream& out) const
+{// Put the list into the stream out.
+   for (chainNode<T>* currentNode = firstNode;
+                      currentNode != NULL;
+                      currentNode = currentNode->next)
+      out << currentNode->element << "  ";
+}
 #endif
 
