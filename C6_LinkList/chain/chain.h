@@ -38,6 +38,7 @@ chain<T>::chain(const chain<T> & theList){
     struct chainNode<T> *buf1=theList.firstNode->next;
     struct chainNode<T> *buf2=new chainNode<T>(buf1->element);
     
+    
 }
 
 #endif
