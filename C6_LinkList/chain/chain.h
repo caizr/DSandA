@@ -16,7 +16,7 @@ class chain{
         chain();
         chain(int);
         chain(const chain<T> &);
-
+    //private:
         chainNode<T> *firstNode;
         int listsize;
 
@@ -38,6 +38,13 @@ chain<T>::chain(const chain<T> & theList){
     struct chainNode<T> *buf1=theList.firstNode->next;
     struct chainNode<T> *buf2=new chainNode<T>(buf1->element);
     firstNode->next=buf2;
+    struct chainNode<T> *buf3=firstNode->next;
+    while(buf1->next!=NULL){
+        buf2=new chainNode<T>(buf1->next->element);
+        buf3->next=buf2;
+        buf1=buf1->next;
+        buf3=buf3->next;
+    }
     
 }
 

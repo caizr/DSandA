@@ -8,6 +8,7 @@ int main(){
     struct chainNode<int> c(30);
     a.next=&b;
     b.next=&c;
+    c.next=NULL;
     chain<int> c1;
     c1.firstNode=&a;
     c1.listsize=10;
