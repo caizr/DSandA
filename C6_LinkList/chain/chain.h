@@ -14,7 +14,7 @@ struct chainNode{
 template<class T>
 class chain{
     public:
-    //解析函数
+    //构造函数
         chain();
         chain(int);
         chain(const chain<T> &);
@@ -32,6 +32,12 @@ chain<T>::chain(){
     ;
 }
 
+//构造函数
+template<class T>
+chain<T>::chain(int capacity){
+    firstNode=NULL;
+    listsize=0;
+}
 template<class T>
 chain<T>::chain(const chain<T> & theList){
     //判断是否为空链表
@@ -58,14 +64,23 @@ chain<T>::chain(const chain<T> & theList){
 template<class T>
 chain<T>::~chain(){
     cout<<"~chain!"<<endl;
+    if(firstNode==NULL) return;
     chainNode<T> * toDelete=firstNode;
     while(toDelete->next != NULL){
         chainNode<T> * temp=toDelete->next;
         delete toDelete;
         toDelete = temp;
     }
+    //用这种方法的话，还需要删除最后一个节点
+    delete toDelete;
 }
-
+/* 书上的析构函数 */
+/*  while(firstNode!=NULL){
+        chainNode<T> *nextNode=firstNode->next;
+        delete firstNode;
+        firstNode=nextNode;
+    }
+*/
 //输出
 template<class T>
 void chain<T>::output(ostream& out) const

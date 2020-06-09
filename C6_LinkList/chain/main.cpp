@@ -17,7 +17,7 @@ int main(){
     
 
     chain<int> c2(c1);
- 
+    chain<int> c3(c2);
     c2.output(cout);
     cout<<endl;
     c.next=&d;
