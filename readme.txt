@@ -36,3 +36,4 @@ C5 NOTICE:
            而书上仅仅使用了sourceNode和targetNode，我感觉buf1和buf3有点重复了。
         2. 拷贝构造函数在最后拷贝完成的时候，需要对尾节点的next指针赋予NULL，即buf3
            最后需要buf3->next=NULL;
+           3.
