@@ -22,6 +22,8 @@ int main(){
     cout<<endl;
     c.next=&d;
     d.next=NULL;
+    c3.get(2);
+    cout<<endl<<c3.indexOf(50)<<endl;
     c1.output(cout);
     return 0;
 }

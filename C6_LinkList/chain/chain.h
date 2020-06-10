@@ -18,9 +18,14 @@ class chain{
         chain();
         chain(int);
         chain(const chain<T> &);
-        void output(ostream& out) const;
+
     //析构函数
         ~chain();
+    //
+         T& get(int theIndex) const;
+         void output(ostream& out) const;
+         int indexOf(T element) const;
+         //书上用的是 indexOf(const T& theElement) const;
     //private:
         chainNode<T> *firstNode;
         int listsize;
@@ -68,11 +73,11 @@ chain<T>::~chain(){
     chainNode<T> * toDelete=firstNode;
     while(toDelete->next != NULL){
         chainNode<T> * temp=toDelete->next;
-        delete toDelete;
+        //delete toDelete;
         toDelete = temp;
     }
     //用这种方法的话，还需要删除最后一个节点
-    delete toDelete;
+   // delete toDelete;
 }
 /* 书上的析构函数 */
 /*  while(firstNode!=NULL){
@@ -80,6 +85,53 @@ chain<T>::~chain(){
         delete firstNode;
         firstNode=nextNode;
     }
+*/
+//索引
+template<class T>
+T& chain<T>::get(int theIndex) const{
+    if(theIndex<1){
+        cout<<"Index invalid!"<<endl;
+        throw("index invalid");
+    }
+    
+    chainNode<T> *toGet=firstNode;
+    while(theIndex!=0){
+        toGet=toGet->next;
+        --theIndex;
+    }
+    cout<<toGet->element<<endl;
+    return toGet->element;
+}
+/* 书上的get函数 */
+/*  
+    // 使用checkIndex检查索引
+    checkIndex(theIndex);
+    //移动节点
+    chainNode<T> *currentNode=firstNode;
+    for(int i=0;i<theIndex;++i){
+        currentNode=currentNode->next;
+    }
+    return currentNode->element;
+*/
+//获取索引
+template<class T>
+int chain<T>::indexOf(T element) const{
+    //索引变量
+    int index=0;
+    chainNode<T> * currentNode = firstNode;
+    while(currentNode!=NULL){
+        if(currentNode->element==element)
+            return index;
+        ++index;
+        currentNode=currentNode->next;
+    }
+    return -1;
+}
+/* 书上的indexOf函数 */
+/*  
+    chainNode<T> * currentNode=firstNode;
+    int index=0;
+    
 */
 //输出
 template<class T>
