@@ -22,8 +22,9 @@ int main(){
     cout<<endl;
     c.next=&d;
     d.next=NULL;
-    c3.get(2);
-    cout<<endl<<c3.indexOf(50)<<endl;
+    c2.erase(0);
+    c2.output(cout);
+    cout<<endl;
     c1.output(cout);
     return 0;
 }

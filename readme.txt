@@ -36,4 +36,9 @@ C5 NOTICE:
            而书上仅仅使用了sourceNode和targetNode，我感觉buf1和buf3有点重复了。
         2. 拷贝构造函数在最后拷贝完成的时候，需要对尾节点的next指针赋予NULL，即buf3
            最后需要buf3->next=NULL;
-   
+        3. 应该是c++的一个基础问题：
+           定义indexOf函数的时候，是起初使用:
+           int indexOf(T& element);
+           调用indexOf(20)会出错，于是改称int indexOf(T element);
+           正确的做法应该是indexOf(const T& element);仔细体会
+        4. erase(theIndex)删除节点的时候，需要考虑theIndex=0,这一步我没有做好
