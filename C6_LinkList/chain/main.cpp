@@ -23,6 +23,7 @@ int main(){
     c.next=&d;
     d.next=NULL;
     c2.erase(0);
+    c2.insert(1,50);
     c2.output(cout);
     cout<<endl;
     c1.output(cout);

@@ -95,6 +95,7 @@ template<class T>
 void chain<T>::checkIndex(int theIndex) const{
     if(theIndex<0){
         cout<<"index invalid!"<<endl;
+        throw "index invalid!";
         // 抛出异常 ......
         return;
     }
@@ -186,21 +187,37 @@ void chain<T>::insert(int theIndex,const T& theElement){
     //检查索引
     checkIndex(theIndex);
     //0索引的插入
-    chainNode<T> * toAdd(theElement);
+    chainNode<T> * toAdd= new chainNode<T>(theElement);
     if(theIndex == 0){
-        toAdd->next=firstNode->next;
-        firstNode->next=toAdd;
+        toAdd->next=firstNode;
+        firstNode=toAdd;
         return ;
     }
     //非0索引的插入
     chainNode<T> *currentNode = firstNode;
-    for(int i=0;i<theIndex;++i){
+    for(int i=0;i<theIndex-1;++i){
         currentNode=currentNode->next;
     }
     toAdd->next=currentNode->next;
     currentNode->next=toAdd;
 
 }
+/* 书上的insert函数 */
+/*  
+   if (theIndex == 0)
+      // insert at front
+      firstNode = new chainNode<T>(theElement, firstNode);
+   else
+   {  // find predecessor of new element
+      chainNode<T>* p = firstNode;
+      for (int i = 0; i < theIndex - 1; i++)
+         p = p->next;
+   
+      // insert after p
+      p->next = new chainNode<T>(theElement, p->next);
+   }
+    
+*/
 /************************输出***********************/
 template<class T>
 void chain<T>::output(ostream& out) const
