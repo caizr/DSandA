@@ -29,9 +29,13 @@ C5 NOTICE:
         9. 由于采用了倍增容量，所以erase需要考虑清理多余的空间
         10.类的迭代器实现
 
-c5: 链表 1. struct chainNode和class chain两个类结构实现
-
-C5 NOTICE:
+c6: 链表:
+        1. struct chainNode和class chain两个类结构实现
+        2. 链表扩展类没有看
+        3. 循环链表没有看
+c6: 待完成:
+        1. 双向链表
+C6 NOTICE:
         1. 创建链表的时候，（复制拷贝函数），我使用了3个拷贝缓存(buf1,buf2,buf3)，
            而书上仅仅使用了sourceNode和targetNode，我感觉buf1和buf3有点重复了。
         2. 拷贝构造函数在最后拷贝完成的时候，需要对尾节点的next指针赋予NULL，即buf3
