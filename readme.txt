@@ -33,6 +33,7 @@ c6: 链表:
         1. struct chainNode和class chain两个类结构实现
         2. 链表扩展类没有看
         3. 循环链表没有看
+        4. 后面的算法应用没有看
 c6: 待完成:
         1. 双向链表
 C6 NOTICE:
@@ -46,3 +47,11 @@ C6 NOTICE:
            调用indexOf(20)会出错，于是改称int indexOf(T element);
            正确的做法应该是indexOf(const T& element);仔细体会
         4. erase(theIndex)删除节点的时候，需要考虑theIndex=0,这一步我没有做好
+
+
+c8: 栈:
+        1. 
+c6: 待完成:
+        1.
+C6 NOTICE:
+        1.
